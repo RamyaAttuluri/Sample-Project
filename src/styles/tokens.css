@@ -1,0 +1,138 @@
+/*
+ * Design tokens: the single source of truth for the site's look.
+ *
+ * Every variable in an @theme block becomes BOTH a CSS variable and a Tailwind
+ * utility, e.g. --color-primary -> bg-primary / text-primary / border-primary,
+ * --radius-card -> rounded-card, --shadow-raised -> shadow-raised.
+ * Change a value here and every component using it updates.
+ *
+ * Third-party brand logos (AWS, React, Redis, ...) keep their official colors
+ * in CaseStudy.tsx on purpose; they are not part of the theme.
+ */
+
+@theme static {
+  /* ---------- Brand ---------- */
+  --color-primary: #1f2a3a; /* navy: primary buttons, headings, body text */
+  --color-on-primary: #ffffff; /* text on primary / hover backgrounds */
+  --color-secondary: #3d6a99; /* steel blue: supporting copy */
+  --color-accent: #2f8fd8; /* blue: highlights, card titles, accent bars */
+
+  /* ---------- Interaction states ---------- */
+  --color-hover: var(--color-accent);
+  --color-focus: var(--color-accent);
+
+  /* ---------- Surfaces ---------- */
+  --color-background: #f4f6f9; /* page canvas */
+  --color-surface: #ffffff; /* cards, chips, menus */
+
+  /* ---------- Text ---------- */
+  --color-foreground: var(--color-primary);
+  --color-ink: var(--color-primary); /* headings + primary text */
+  --color-ink-soft: #3a4658; /* nav links, small labels */
+  --color-muted: var(--color-secondary); /* paragraphs, descriptions */
+  --color-subtle: #6b7686; /* secondary meta (roles) */
+  --color-faint: #8a94a3; /* eyebrows */
+
+  /* ---------- Borders ---------- */
+  --color-line: #d3dbe6; /* dividers */
+  --color-line-strong: #b9c8dc; /* footer / FAQ rules */
+  --color-line-card: #cfd7e2; /* card outlines */
+  --color-line-soft: #d7dee8; /* mobile menu */
+  --color-line-input: var(--color-ink-soft); /* form fields */
+
+  /* ---------- Decorative glows (blurred blobs) ---------- */
+  --color-glow-blue: #8fc3ef;
+  --color-glow-orange: #f7b48a;
+  --color-glow-yellow: #f5dc85;
+  --color-glow-blue-soft: #9cc9ee;
+  --color-glow-orange-soft: #f6c3a0;
+  --color-glow-yellow-soft: #f5e3a3;
+
+  /* ---------- Tones (tinted icon tiles) ---------- */
+  --color-tone-red: #e0634f;
+  --color-tone-red-soft: #fde6e2;
+  --color-tone-purple: #7a52d6;
+  --color-tone-purple-soft: #ede6fb;
+  --color-tone-green: #2f9e5d;
+  --color-tone-green-soft: #def3e6;
+  --color-tone-blue: #2f6fd0;
+  --color-tone-blue-soft: #e1edfb;
+  --color-tone-orange: #e08a33;
+  --color-tone-orange-soft: #fdebd8;
+
+  /* ---------- Typography ---------- */
+  /* Families come from next/font in layout.tsx (see @theme inline below).
+     Weights and the standard size scale (text-sm ... text-8xl) are Tailwind
+     defaults; override them here (e.g. --font-weight-medium) if needed. */
+  --text-2xs: 11px;
+  --text-nav: 15px;
+  --leading-display: 1.05; /* hero titles */
+  --leading-heading: 1.1; /* case-study titles */
+
+  /* ---------- Layout & spacing ---------- */
+  --container-page: 72rem; /* max-w-page */
+  --spacing-gutter: 1rem; /* page side padding (mobile) */
+  --spacing-gutter-sm: 1.5rem; /* page side padding (sm and up) */
+  --spacing-section: 5rem; /* vertical rhythm between sections */
+  --spacing-rule: 3px; /* thickness of accent bars */
+
+  /* ---------- Radius ---------- */
+  --radius-card: 0.75rem;
+  --radius-tile: 0.5rem;
+  --radius-chip: 0.375rem;
+
+  /* ---------- Shadows ---------- */
+  --shadow-raised: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+  /* ---------- Blur ---------- */
+  --blur-glow: 110px;
+  --blur-glow-lg: 120px;
+}
+
+/* Font families are injected by next/font on <html>, so they must be inlined. */
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ---------- Patterns & gradients (not Tailwind namespaces) ---------- */
+:root {
+  --pattern-line: rgb(31 42 58 / 0.035);
+  --pattern-hatch: rgb(31 42 58 / 0.07);
+  --pattern-grid-size: 48px;
+  --gradient-grid:
+    linear-gradient(var(--pattern-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--pattern-line) 1px, transparent 1px);
+  --gradient-hatch: repeating-linear-gradient(135deg, var(--pattern-hatch) 0 1px, transparent 1px 7px);
+}
+
+/* ---------- Semantic utilities built from the tokens ---------- */
+
+/* Centered page column with responsive side gutters */
+@utility page-container {
+  @apply mx-auto max-w-page px-gutter sm:px-gutter-sm;
+}
+
+/* Responsive typography */
+@utility type-display {
+  @apply text-5xl leading-display tracking-tight sm:text-7xl lg:text-8xl;
+}
+@utility type-section {
+  @apply text-4xl tracking-tight sm:text-5xl;
+}
+@utility type-copy {
+  @apply font-mono text-sm leading-6;
+}
+@utility type-caption {
+  @apply font-mono text-xs leading-5;
+}
+
+/* Primary call-to-action button (navy -> accent on hover) */
+@utility btn-primary {
+  @apply bg-primary px-4 py-3 text-sm font-medium text-on-primary transition-colors hover:bg-hover;
+}
+
+/* Diagonal-stripe decoration (Hatch component); the page grid is .site-bg in globals.css */
+@utility bg-hatch {
+  background-image: var(--gradient-hatch);
+}
