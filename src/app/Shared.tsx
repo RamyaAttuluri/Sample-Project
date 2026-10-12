@@ -60,8 +60,8 @@ export function PageHero({
   title,
   subtitle,
   intro,
-  primary = { label: "Get a consultation", href: "/contact" },
-  secondary = { label: "View Case Studies", href: "/projects" },
+  primary = { label: "Get a consultation", href: "/Contact" },
+  secondary = { label: "View Case Studies", href: "/Projects" },
   children,
 }: {
   title: ReactNode;
