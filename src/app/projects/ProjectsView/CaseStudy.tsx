@@ -552,10 +552,10 @@ function caseStudyIds(): number[] {
 const caseStudyHref = (id: number) => `/Projects/ProjectsView/Project${id}`;
 
 export default function CaseStudy({ data }: { data: CaseStudyData }) {
-  // Previous on the first case study returns to /Projects; the last one has no Next.
+  // Previous on the first case study returns to /Projects/ProjectsView; the last one has no Next.
   const ids = caseStudyIds();
   const pos = ids.indexOf(data.id);
-  const prevHref = pos > 0 ? caseStudyHref(ids[pos - 1]) : "/Projects";
+  const prevHref = pos > 0 ? caseStudyHref(ids[pos - 1]) : "/Projects/ProjectsView";
   const nextHref = pos < ids.length - 1 ? caseStudyHref(ids[pos + 1]) : undefined;
 
   return (

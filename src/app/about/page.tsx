@@ -24,12 +24,12 @@ const timeline = [
     text: "Our next phase focuses on expanding our presence across India, strengthening delivery capabilities, and building large technology teams to serve businesses across industries",
   },
   {
-    year: "2020",
+    year: "2028",
     title: "Global Enterprise",
     text: "GGST aims to expand its global footprint with international offices and stronger partnerships across markets including the USA, Europe, and the Middle East",
   },
   {
-    year: "2021",
+    year: "2029",
     title: "Industry Leadership",
     text: "Our long term vision is to become a globally recognised technology enterprise, delivering innovative digital products, AI powered solutions, cloud service, and enterprise technology at scale.",
   },
