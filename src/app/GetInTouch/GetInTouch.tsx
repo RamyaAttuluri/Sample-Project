@@ -4,9 +4,9 @@ import { SectionHeading } from "../Shared";
 /* "Get in Touch Today" section — drop <GetInTouch /> at the bottom of any page. */
 
 const contacts = [
-  { title: "Email Us", text: "contact@abccompany.com", href: "mailto:contact@abccompany.com", img: "/Home/image10.png" },
-  { title: "Call Us", text: "+1 (XXX) XXX-XXXX", href: "tel:+1XXXXXXXXXX", img: "/Home/image11.png" },
-  { title: "Visit Us", text: "123, Main Road, London, UK.", href: undefined, img: "/Home/image12.png" },
+  { title: "Email Us", text: "ganeshsamineni@ggstinnovations.com", href: "mailto:ganeshsamineni@ggstinnovations.com", img: "/Home/image10.png" },
+  { title: "Call Us", text: "+91 99080 54038", href: "tel:+919908054038", img: "/Home/image11.png" },
+  { title: "Visit Us", text: "4th Floor, MPR Arcade, \nMadhapur, Hyderabad", href: undefined, img: "/Home/image12.png" },
 ];
 
 export default function GetInTouch() {
